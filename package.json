@@ -1,0 +1,13 @@
+{
+  "name": "privoice",
+  "version": "1.0.0",
+  "private": true,
+  "description": "无需登录的私密语音房间",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
