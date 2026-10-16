@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>语音房间</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ============ 首页 ============ -->
+  <section id="home" class="screen active">
+    <div class="brand">
+      <div class="brandIcon">🎧</div>
+      <div class="brandName">语音房间</div>
+    </div>
+
+    <div class="form">
+      <div class="pwdwrap">
+        <input id="pwd" type="password" placeholder="房间密码" autocomplete="off" spellcheck="false">
+        <button id="btnEye" class="eye" type="button">👁</button>
+      </div>
+      <div class="meter"><i id="meterBar"></i></div>
+
+      <input id="nick" type="text" placeholder="昵称（可选）" maxlength="16" autocomplete="off" spellcheck="false">
+
+      <div class="row">
+        <button id="btnCreate" class="btn primary">开房间</button>
+        <button id="btnJoin" class="btn">进房间</button>
+      </div>
+
+      <div class="hint" id="homeHint"></div>
+
+      <div class="share" id="shareBox" style="display:none">
+        <div class="shareTitle">房间已创建，把链接发给朋友</div>
+        <div class="shareRow">
+          <input id="shareLink" readonly>
+          <button id="btnCopy" class="btn tiny">复制</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 房间 ============ -->
+  <section id="room" class="screen">
+    <header class="bar">
+      <div class="roomLeft">
+        <span class="dot" id="connDot"></span>
+        <span id="roomLabel">房间</span>
+        <span class="cnt" id="peerCount">1</span>
+      </div>
+      <div class="barRight">
+        <button id="btnPanel" class="iconBtn">☰</button>
+      </div>
+    </header>
+
+    <div class="stage" id="stage">
+      <div class="peers" id="peers"></div>
+      <div class="empty" id="emptyTip">等待其他人加入…<br><small>把密码告诉朋友</small></div>
+    </div>
+
+    <div class="videobox" id="videoBox">
+      <div class="videos" id="videos"></div>
+    </div>
+
+    <div class="controls">
+      <button id="btnMic" class="ctrl on"><span class="ci">🎤</span><span class="cl">麦克风</span></button>
+      <button id="btnDeaf" class="ctrl on"><span class="ci">🔊</span><span class="cl">扬声器</span></button>
+      <button id="btnCam" class="ctrl"><span class="ci">📷</span><span class="cl">摄像头</span></button>
+      <button id="btnScreen" class="ctrl"><span class="ci">🖥</span><span class="cl">屏幕</span></button>
+      <button id="btnVoice" class="ctrl"><span class="ci">🎛</span><span class="cl">变声</span></button>
+      <button id="btnImg" class="ctrl"><span class="ci">🖼</span><span class="cl">图片</span></button>
+      <button id="btnChat" class="ctrl"><span class="badge red" id="unread" style="display:none">0</span><span class="ci">💬</span><span class="cl">聊天</span></button>
+      <button id="btnLeave" class="ctrl danger"><span class="ci">📵</span><span class="cl">离开</span></button>
+    </div>
+
+    <input id="fileInput" type="file" accept="image/*" multiple style="display:none">
+
+    <!-- 聊天 -->
+    <div class="chat" id="chat">
+      <div class="chatHead">
+        <span>聊天</span>
+        <button id="btnChatClose" class="iconBtn">✕</button>
+      </div>
+      <div class="msgs" id="msgs"></div>
+      <div class="typing" id="typing"></div>
+      <div class="compose">
+        <input id="msgInput" type="text" placeholder="消息" maxlength="2000" autocomplete="off">
+        <button id="btnImgPick" class="iconBtn">🖼</button>
+        <button id="btnSend" class="btn primary tiny">发送</button>
+      </div>
+    </div>
+
+    <!-- 成员 -->
+    <div class="panel" id="panel">
+      <div class="chatHead">
+        <span>成员</span>
+        <button id="btnPanelClose" class="iconBtn">✕</button>
+      </div>
+      <div class="memberList" id="memberList"></div>
+    </div>
+
+    <div id="audios"></div>
+  </section>
+
+  <div id="toast" class="toast"></div>
+  <div id="modal" class="modal"><div class="modalBox" id="modalBox"></div></div>
+  <div id="imgView" class="imgView"><img id="imgViewImg" alt=""><button id="imgViewClose" class="imgViewClose">✕</button></div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
