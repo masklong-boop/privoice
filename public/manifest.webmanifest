@@ -1,0 +1,9 @@
+{
+  "name": "语音房间",
+  "short_name": "语音房间",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070a0f",
+  "theme_color": "#070a0f",
+  "icons": []
+}
